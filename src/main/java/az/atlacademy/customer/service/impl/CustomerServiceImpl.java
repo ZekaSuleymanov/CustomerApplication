@@ -44,12 +44,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(Long id, CustomerRequestDto customerRequestDto) {
-        CustomerEntity CustomerEntity = customerRepository.findById(id)
-                .orElseThrow(() -> new CustomerNotFoundException("Customer not found with id " + id));
+        CustomerEntity customerEntity = customerMapper.toEntity(customerRequestDto);
+        customerEntity.setId(id);
 
-        customerMapper.toEntity(new CustomerRequestDto());
-
-        customerRepository.save(CustomerEntity);
+        customerRepository.save(customerEntity);
     }
 
 

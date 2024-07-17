@@ -24,6 +24,8 @@ public class GlobalExceptionHandler {
                         LocalDateTime.now()));
     }
 
+
+    //@ExceptionHandler
     public ResponseEntity<ErrorDto> handleInternalServerError(NullPointerException nullPointerException) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorDto(400,
